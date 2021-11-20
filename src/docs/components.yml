@@ -1,0 +1,62 @@
+components:
+  schemas:
+    Url:
+      type: object
+      properties:
+        name:
+          type: string
+      example:
+        date: Fri Nov 19 2021 16:18:48 GMT+0100 (West Africa Standard Time)
+        longUrl: https://www.google.com/search?q=valid+ur%3B+npm&sxsrf=AOaemvIqeDOwYr-jtVQmB10mo60ZF2N1VA%3A1637249964735&ei=rHOWYaG0LIedlwSRl6aQCg&ved=0ahUKEwihurm0n6L0AhWHzoUKHZGLCaIQ4dUDCA4&uact=5&oq=valid+ur%3B+npm&gs_lcp=Cgdnd3Mtd2l6EAMyBAgAEA0yCAgAEAgQDRAeMggIABAIEA0QHjIICAAQCBANEB4yCAgAEAgQDRAeOgcIIxCwAxAnOgcIABBHELADOgcIABCwAxBDOgYIABAHEB46CAgAEAgQBxAeOgoIABAIEAcQChAeOgQIIxAnOgQIABBDOgUIABCABEoECEEYAFDqBFjaLmCRPmgBcAJ4AYABtgKIAckYkgEHMC41LjguMZgBAKABAcgBCsABAQ&sclient=gws-wiz
+        shortUrl: http:localhost3000/short.ly/q3nROFdbm0
+        urlCode: q3nROFdbm0,
+        id: 6197c05814bc1c19bcb43952
+    
+
+
+    
+
+
+  responses:
+    InvalidUrl:
+      description: invalid URL
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 400
+            message: Invalid Url
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 401
+            message: Please authenticate
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 403
+            message: Forbidden
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 404
+            message: Not found
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
